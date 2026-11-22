@@ -1,0 +1,362 @@
+/* =========================================================
+   COLORS
+   Change a color here and it updates everywhere.
+   All text colors meet WCAG AA contrast on their backgrounds.
+   ========================================================= */
+:root {
+  --text: #1f2933;          /* main text: near-black */
+  --background: #ffffff;    /* page background */
+  --heading: #0b4f6c;       /* dark blue-teal headings */
+  --link: #0a58a6;          /* links */
+  --link-visited: #5b3a99;  /* links you already clicked */
+  --soft: #eef4f8;          /* light blue boxes */
+  --border: #b8c4ce;        /* table and box lines */
+  --crisis-bg: #fff4e5;     /* light orange crisis box */
+  --crisis-border: #b45309; /* dark orange edge */
+  --focus: #d97706;         /* keyboard focus outline */
+}
+
+/* =========================================================
+   BASICS: font, size, spacing
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 50rem;          /* keeps lines a comfortable length to read */
+  padding: 0 1rem 2rem;      /* 1rem gap at the sides on phones */
+  background: var(--background);
+  color: var(--text);
+  /* Fonts already on the visitor's device: nothing is downloaded */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: var(--heading);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--soft);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================================
+   ACCESSIBILITY HELPERS
+   ========================================================= */
+
+/* Clear outline when moving through the page with the Tab key */
+a:focus-visible,
+.table-wrap:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Hidden on screen but still read aloud by screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* "Skip to main content": appears only when reached with the Tab key */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--heading);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: #ffffff;
+}
+
+/* =========================================================
+   TOP OF PAGE
+   ========================================================= */
+.intro {
+  font-size: 1.2rem;
+}
+
+.last-checked {
+  color: #4a5560;
+  font-size: 1rem;
+}
+
+/* Crisis boxes (top of page and Support section) */
+.crisis {
+  background: var(--crisis-bg);
+  border-left: 6px solid var(--crisis-border);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.crisis h2 {
+  margin-top: 0;
+  border-bottom: none;
+  font-size: 1.3rem;
+}
+
+.crisis ul {
+  padding-left: 1.25rem;
+}
+
+.crisis p {
+  margin-bottom: 0;
+}
+
+/* "Information only, not medical advice" notes */
+.disclaimer,
+.note {
+  background: var(--soft);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+}
+
+.note {
+  font-style: italic;
+}
+
+/* Table of contents */
+.toc {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.toc h2 {
+  margin-top: 0.75rem;
+  border-bottom: none;
+  font-size: 1.2rem;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+/* On narrow screens the table scrolls sideways inside this box */
+.table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 36rem;
+  font-size: 1rem;
+}
+
+caption {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  background: var(--soft);
+}
+
+tbody th {
+  font-weight: 600;
+}
+
+/* =========================================================
+   STEPS AND CHECKLIST
+   ========================================================= */
+.steps li {
+  margin-bottom: 1rem;
+}
+
+/* Doctor questions: draws an empty box before each question */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.9rem;
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  width: 1.1em;
+  height: 1.1em;
+  border: 2px solid var(--heading);
+  border-radius: 2px;
+}
+
+/* Things that only appear on paper */
+.print-only {
+  display: none;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--soft);
+  font-size: 1rem;
+}
+
+/* =========================================================
+   PHONES (screens narrower than 600px)
+   ========================================================= */
+@media (max-width: 600px) {
+  body {
+    font-size: 1.0625rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+}
+
+/* =========================================================
+   PRINT
+   The doctor questions always start on a new page and fit on one page.
+   ========================================================= */
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+    font-size: 11pt;
+    color: #000000;
+  }
+
+  /* Not useful on paper */
+  .skip-link,
+  .toc,
+  .screen-only {
+    display: none;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  /* Show the web address after each outside link */
+  main a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  a,
+  a:visited {
+    color: #000000;
+  }
+
+  .table-wrap {
+    overflow: visible;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  tr,
+  .crisis {
+    break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Doctor questions: new page, kept together */
+  #questions {
+    break-before: page;
+    break-inside: avoid;
+    font-size: 13pt;
+  }
+
+  #questions h2 {
+    margin-top: 0;
+  }
+
+  .checklist li {
+    margin-bottom: 1.1rem;
+  }
+
+  .notes-box {
+    border: 1px solid #000000;
+    height: 6cm;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .print-footer {
+    font-size: 9pt;
+    margin-top: 1rem;
+  }
+
+  /* Footer would add a page after the questions */
+  .site-footer {
+    display: none;
+  }
+}
